@@ -169,7 +169,7 @@ class Model {
   get result() {
     return `
     Score : ${this.points}/${this.totalPoints} <br>
-    Corrected : ${this.corrected}/${this.attempts} <br>
+    Correct : ${this.corrected}/${this.attempts} <br>
     Attempted : ${this.attempts}/${this.questions.length} <br>
     `;
   }
@@ -179,10 +179,10 @@ class Model {
       .map((e) => {
         return `<br>
         ${e.id + 1}. ${e.q}<br> 
-        (1) ${e.options[0]}
-        (2) ${e.options[1]}<br>
-        (3) ${e.options[2]}
-        (4) ${e.options[3]}<br>
+          1. ${e.options[0]}
+          2. ${e.options[1]}<br>
+          3. ${e.options[2]}
+          4. ${e.options[3]}<br>
         correct : ${e.correct + 1}<br>
         `;
       })
@@ -292,7 +292,7 @@ class View {
   }
   // scoreboard
   updateScoreBoard(corrected, points, totalQuestions, totalPoints) {
-    this.totalCorrected.html(`Corrected : ${corrected}/${totalQuestions}`);
+    this.totalCorrected.html(`Correct : ${corrected}/${totalQuestions}`);
     this.totalPoints.html(`Points : ${points}/${totalPoints}`);
   }
   // modals
