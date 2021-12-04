@@ -155,7 +155,7 @@ button {
   background: linear-gradient(
     69deg,
     rgba(16, 16, 16, 1) 0%,
-    rgba(48, 48, 48, 1) 35%,
+    rgba(48, 48, 48, 1) 75%,
     rgba(80, 80, 80, 1) 100%
   );
   display: flex;
