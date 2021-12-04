@@ -178,11 +178,11 @@ class Model {
     ${this.questions
       .map((e) => {
         return `<br>
-        ${e.id + 1}. ${e.q}  <br> 
+        ${e.id + 1}. ${e.q}<br> 
         (1) ${e.options[0]}
-        (2) ${e.options[1]} <br>
+        (2) ${e.options[1]}<br>
         (3) ${e.options[2]}
-        (4) ${e.options[3]} <br>
+        (4) ${e.options[3]}<br>
         correct : ${e.correct + 1}<br>
         `;
       })
@@ -190,7 +190,10 @@ class Model {
     `;
   }
   goToQuestion(i) {
-    if (i > this.attempts || (i === -1 && this.attempts !== 15)) return;
+    if (i > this.attempts || (i === -1 && this.attempts !== 15))
+      return alert(
+        `Please Select One Option for Question ${this.attempts + 1}!!`
+      );
     else if (i === -1) this.currentIndex = this.questions.length - 1;
     else if (i < this.questions.length) this.currentIndex = i;
     else if (!i) return this.question;
@@ -333,7 +336,7 @@ class View {
   }
   onPageClick(text) {
     $("#getAllQBtn").click(() => {
-      $(".container").hide()
+      $(".container").hide();
       this.showPage(true).html(
         text + `<button onclick="window.print()">Print or Save as PDF</button>`
       );
@@ -398,6 +401,7 @@ class Controller {
       let isCorrect = this.model.checkAnswer(id);
       if (!isCorrect || this.model.attempts === 15) {
         this.view.submit(() => this.model.result);
+        this.model.resetQuiz();
         this.bindOnResetQuiz();
         this.view.onPageClick(this.model.AllQuestionsAsText);
       }
@@ -434,7 +438,6 @@ class Controller {
   }
   bindOnResetQuiz() {
     this.view.onReset(() => {
-      this.model.resetQuiz();
       this.bindUpdateScoreBoard();
       this.bindShowQuestion();
     });

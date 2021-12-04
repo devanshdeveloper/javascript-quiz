@@ -42,9 +42,6 @@ button {
   padding: 5px 10px;
   margin: 10px 10px 0 0;
 }
-button:hover{
-  background-color: #202020;
-}
 .questionTraker {
   display: flex;
   flex-direction: column;
@@ -56,9 +53,8 @@ button:hover{
   border-radius: 5px;
 }
 
-.questionTraker .selected , 
-.questionTraker div:hover  
- {
+.questionTraker .selected,
+.questionTraker div:hover {
   color: rgb(150, 150, 150);
 }
 .questionTraker .wrong {
@@ -114,19 +110,17 @@ button:hover{
   font-size: 1.3rem;
 }
 
-.optionsDiv button:hover {
-  background-color: #202020;
-}
-
 .optionsDiv button:disabled {
-  color: white;
+  background-color: #202020;
   border: 1px solid #000000;
 }
 
-.optionsDiv .selected {
+.optionsDiv .selected,
+.optionsDiv button:disabled.selected {
   background-color: #300f0f;
 }
-.optionsDiv .corrected {
+.optionsDiv .corrected,
+.optionsDiv button:disabled.corrected {
   background-color: #0d300f;
 }
 .wrapper,
@@ -142,7 +136,7 @@ button:hover{
 }
 
 .wrapper {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal {
@@ -194,6 +188,9 @@ a {
 a:hover {
   text-decoration: underline;
 }
+button:hover:not(.optionsDiv button) {
+  background-color: #202020;
+}
 @media only screen and (max-width: 700px) {
   .qContainer pre {
     font-size: 1.1rem;
@@ -203,15 +200,19 @@ a:hover {
   }
   .optionsDiv button {
     font-size: 1rem;
+    height: 70px;
   }
   .container {
     display: flex;
     flex-direction: column;
   }
   .qContainer {
-    height: 200px;
+    height: 250px;
   }
   .sidebar {
     padding: 10px;
+  }
+  .questionTraker{
+    display: none;
   }
 }
