@@ -67,7 +67,7 @@ class ElementSelector {
     return this.el.checked;
   }
   // setters
-  set innerHTML(value) {
+  set HTML(value) {
     this.el.innerHTML = value;
   }
   setEls(elements, queries) {
@@ -137,11 +137,6 @@ class ElementSelector {
   }
   disable(boolean) {
     return this.prop("disabled", boolean);
-  }
-  checked(boolean = true) {
-    if (isBoolean(boolean))
-      return this.forEachELement((e) => (e.checked = boolean));
-    else return this.mapElements((e) => e.checked);
   }
   // document
   appendTo(el) {
@@ -227,3 +222,4 @@ class useStorage {
 }
 
 const ls = new useStorage(localStorage);
+

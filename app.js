@@ -332,11 +332,12 @@ class View {
     return this.page.hide(!boolean);
   }
   onPageClick(text) {
-    $("#getAllQBtn").click(() =>
+    $("#getAllQBtn").click(() => {
+      $(".container").hide()
       this.showPage(true).html(
         text + `<button onclick="window.print()">Print or Save as PDF</button>`
-      )
-    );
+      );
+    });
   }
   onReset(func) {
     $("#resetBtn").click(() => {
@@ -366,12 +367,10 @@ class Controller {
     this.bindUpdateScoreBoard();
     this.bindShowQuestion();
     // events
-    this.view.onPageClick(this.model.AllQuestionsAsText);
     this.view.onClickHideScreen();
     this.bindOnOptionClick();
     $("#nextBtn").click(() => this.bindOnClick(1));
     $("#prevBtn").click(() => this.bindOnClick(-1));
-    this.bindOnResetQuiz();
     this.addBeforeUnload();
     this.addKeyboardEvents();
   }
@@ -397,8 +396,11 @@ class Controller {
   bindOnOptionClick() {
     this.view.onOptionClick((id) => {
       let isCorrect = this.model.checkAnswer(id);
-      if (!isCorrect || this.model.attempts === 15)
+      if (!isCorrect || this.model.attempts === 15) {
         this.view.submit(() => this.model.result);
+        this.bindOnResetQuiz();
+        this.view.onPageClick(this.model.AllQuestionsAsText);
+      }
       this.bindUpdateScoreBoard();
       this.view.updateQuestionTraker(this.model.question);
       this.view.updateQuestion(this.model.question.correct, id);
