@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="startScreen">
+        <span class="startText">JavaScript Quiz</span>
+        <button id="startBtn">Start</button>
+        <button id="viewShortBtn">View Shortcuts</button>
+    </div>
+    <div class="container">
+        <div class="qContainer">
+            <p id="showQ"></p>
+        </div>
+        <div class="optionsDiv">
+            <button id="0"></button>
+            <button id="1"></button>
+            <button id="2"></button>
+            <button id="3"></button>
+        </div>
+
+        <div class="sidebar">
+            <button id="prevBtn">Back</button>
+            <button id="nextBtn">Next</button>
+            <!-- <button id="submitBtn">Submit</button> -->
+            <p id="totalPoints"></p>
+            <p id="totalCorrected"></p>
+            <div class="questionTraker"></div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="modal">
+        </div>
+    </div>
+    <div class="page"></div>
+    <script src="extended.js"></script>
+    <script src="app2.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
