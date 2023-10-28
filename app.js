@@ -283,9 +283,10 @@ class View {
   }
   updateQuestion(correct, selected) {
     if (selected !== -1) this.disableOptionBtns();
-    if (selected === correct)
+    console.log("updateQ", this.optionBtns, selected, correct);
+    if (selected === correct) {
       this.addClassTo(this.optionBtns, selected, "corrected");
-    else if (selected !== -1) {
+    } else if (selected !== -1) {
       this.addClassTo(this.optionBtns, selected, "selected");
       this.addClassTo(this.optionBtns, correct, "corrected");
     }
@@ -399,6 +400,7 @@ class Controller {
   bindOnOptionClick() {
     this.view.onOptionClick((id) => {
       let isCorrect = this.model.checkAnswer(id);
+      this.view.updateQuestion(this.model.question.correct, id);
       if (!isCorrect || this.model.attempts === 15) {
         this.view.submit(() => this.model.result);
         this.model.resetQuiz();
@@ -407,7 +409,6 @@ class Controller {
       }
       this.bindUpdateScoreBoard();
       this.view.updateQuestionTraker(this.model.question);
-      this.view.updateQuestion(this.model.question.correct, id);
     });
   }
   addBeforeUnload() {
